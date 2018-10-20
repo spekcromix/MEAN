@@ -1,0 +1,32 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <mat-icon matPrefix>account_circle</mat-icon>
+    <input matInput type="text" placeholder="Nombre" formControlName="firstName" id="firstName" name="firstName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-icon matPrefix>account_circle</mat-icon>
+    <input matInput type="text" placeholder="Apellidos" formControlName="lastName" id="lastName" name="lastName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-icon matPrefix>email</mat-icon>
+    <input matInput type="email" placeholder="Correo electrónico" formControlName="email" id="email" name="email">
+  </mat-form-field>
+  <div>
+    <p *ngIf="passwordNotEqual">Las contraseñas no coinciden</p>
+  </div>
+  <mat-form-field>
+    <mat-icon matPrefix>lock</mat-icon>
+    <input matInput placeholder="Contraseña" formControlName="password" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-icon matPrefix>lock</mat-icon>
+    <input matInput placeholder="Confirma contraseña" formControlName="password2" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="accent">Crear Cuenta</button>
+  <p style="text-align: center">
+    ¿Ya tienes un usuario?
+    <a mat-button color="primary" [routerLink]="['/signin']">Iniciar Sesión</a>
+  </p>
+</form>
